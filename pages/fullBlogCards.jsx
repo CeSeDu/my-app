@@ -28,33 +28,34 @@ const FullBlogCards = () => {
     }
 
     return (
-<>
-        <div className="flex flex-wrap gap-5 justify-center " >
-            {data.map((article, index) => (
-                <Link key={index} href={`/detail/${article.id}`} passHref >
-                    <div className="text-center  gap-12 border p-5 bg-purple-900 bg-opacity-10 rounded-lg shadow-2xl cursor-pointer">
-                        <h2 className="text-2xl text-purple-950 p-5 min-h-50">
-                            {article.title}
-                        </h2>
-                        {article.urlToImage && (
-                            <Image
-                                src={article.urlToImage}
-                                alt={article.title}
-                                width={900}
-                                height={450}
-                                layout="responsive"
-                                className="rounded-lg shadow-2xl"
-                            />
-                        )}
-                        <p className="text-xl p-5 text-purple-900">{article.author}</p>
-                        <p className="p-5">{article.description}</p>
-                    </div>
-                </Link>
-            ))}
+        <div className="container mx-auto px-4">
+    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5">
+      {data.map((article, index) => (
+          <Link key={index} href={`/detail/${article.id}`} passHref>
+            <div className="relative pb-48 overflow-hidden">
+              {article.urlToImage && (
+                <Image
+                  src={article.urlToImage}
+                  alt={article.title}
+                  layout="fill"
+                  objectFit="cover"
+                  className="absolute inset-0 h-full w-full object-cover transition-opacity duration-500 hover:opacity-75"
+                />
+              )}
+            </div>
+            <div className="p-4">
+              <h5 className="text-xl font-bold tracking-tight text-gray-900">
+                {article.title}
+              </h5>
+              <p className="mt-3 text-base text-gray-500">
+                {article.description}
+              </p>
+            </div>
+        </Link>
+      ))}
+    </div>
+  </div>
 
-        </div>
-      
-      </> 
     );
 }
 
