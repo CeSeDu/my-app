@@ -3,7 +3,7 @@ import Image from 'next/image';
 import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
 
-const FullBlogCards = () => {
+const Blogs = () => {
     const [data, setData] = useState(null); // Verileri saklayacak state
 
     useEffect(() => {
@@ -29,10 +29,11 @@ const FullBlogCards = () => {
 
     return (
 <>
-        <div className="flex flex-wrap gap-5 justify-center " >
+        <div className="grid grid-columns-3
+        p-24 gap-5   w-1/2" >
             {data.map((article, index) => (
                 <Link key={index} href={`/detail/${article.id}`} passHref >
-                    <div className="text-center  gap-12 border p-5 bg-purple-900 bg-opacity-10 rounded-lg shadow-2xl cursor-pointer">
+                    <div className="text-center gap-12 border  p-5 bg-purple-900 bg-opacity-10 max-w-80 rounded-lg shadow-2xl cursor-pointer">
                         <h2 className="text-2xl text-purple-950 p-5 min-h-50">
                             {article.title}
                         </h2>
@@ -58,4 +59,4 @@ const FullBlogCards = () => {
     );
 }
 
-export default FullBlogCards;
+export default Blogs;
