@@ -7,7 +7,7 @@ const limitedBlogs = (  {articles } ) => {
     <div>
       {articles.map((article, index) => (
         <div key={index}>
-          {/* Makale detaylarını burada göster */}
+          
         </div>
       ))}
     </div>
