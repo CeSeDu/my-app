@@ -4,33 +4,28 @@ import Image from 'next/image';
 
 const DetailPage = () => {
   const router = useRouter();
+  const { id } = router.query;  // Kullanılacak doğru parametre
   const [article, setArticle] = useState(null);
 
   useEffect(() => {
-    const title = router.query.title; // URL'den başlık alınıyor
-    if (!router.isReady || !title) return;  // Router ve başlık hazır değilse işlem yapma
+    if (!router.isReady) return; // Router hazır değilse fonksiyonu durdur
 
-    const fetchArticle = async () => {
-      try {
-        const encodedTitle = encodeURIComponent(title);
-        const apiUrl = `https://newsapi.org/v2/everything?q=${encodedTitle}&apiKey=935002bd262b4b8392de801283519e42`;
-        const response = await fetch(apiUrl);
-        const jsonData = await response.json();
-        console.log("Response:", response); // HTTP yanıtını konsolda göster
-        console.log("JSON Data:", jsonData); // JSON olarak ayrıştırılmış veriyi konsolda göster
+    const fetchData = async () => {
+      if (!id) return;  // ID yoksa fonksiyonu durdur
+      const urlQuery = encodeURIComponent(id); // Arama yapılacak spesifik bir terim
+      const apiUrl = `https://newsapi.org/v2/everything?q=${urlQuery}&apiKey=935002bd262b4b8392de801283519e42`;
 
-        if (jsonData.articles && jsonData.articles.length > 0) {
-          setArticle(jsonData.articles[0]);
-        } else {
-          console.log('No articles found for this title.');
-        }
-      } catch (error) {
-        console.error('Error fetching article:', error);
+      const response = await fetch(apiUrl);
+      const jsonData = await response.json();
+      if (jsonData.articles && jsonData.articles.length > 0) {
+        setArticle(jsonData.articles.find(article => article.title.toLowerCase().includes(urlQuery.toLowerCase())) || jsonData.articles[0]);
+      } else {
+        console.log('No articles found for this query.');
       }
     };
 
-    fetchArticle();
-  }, [router.isReady, router.query.title]);  // title değiştiğinde tetikle
+    fetchData();
+  }, [router.isReady, id]);  // id değişikliklerini izliyoruz
 
   if (!article) {
     return <div>Loading...</div>;

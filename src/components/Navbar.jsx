@@ -19,8 +19,12 @@ const Navbar = () => {
                 </Link>
             </ul>
             <ul className='flex justify-between gap-5'>
-                <li><FaInstagram /></li>
+              <Link href="https://www.instagram.com/">
+              <li><FaInstagram /></li>
+              </Link>
+              <Link href="https://twitter.com/?lang=en">
                 <li><CiTwitter /></li>
+              </Link>
             </ul>
 
     </div>

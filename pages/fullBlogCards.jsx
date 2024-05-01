@@ -38,14 +38,13 @@ const FullBlogCards = () => {
 
   return (
     <>
-    <div className="container mx-auto p-4">
-      <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 m-16">
         {data.map((article, index) => (
-          <Link key={index} href={`/detail/${encodeURIComponent(article.title)}/page`} passHref>
-            <div className="m-12 text-center border p-5 bg-purple-900 bg-opacity-10 rounded-lg shadow-2xl cursor-pointer transform transition duration-500 hover:scale-105">
-              <h2 className="text-2xl text-purple-950 p-5 min-h-50">
+          <Link className="bg-purple-900 m-24"  key={index} href={`/detail/${encodeURIComponent(article.title)}/page`} passHref>         
+            <div className="m-12 border p-5 bg-opacity-10 rounded-lg shadow-2xl cursor-pointer transform transition duration-500 hover:scale-105 ">
+            <h2 className="text-4xl font-semibold text-purple-950 p-5">
                 {article.title}
               </h2>
+              <div className="flex">
               {article.urlToImage && (
                 <Image
                   src={article.urlToImage}
@@ -53,16 +52,18 @@ const FullBlogCards = () => {
                   width={450}
                   height={300}
                   objectFit="cover"
-                  className="rounded-lg shadow-2xl mb-5 m-auto"
+                  className="rounded-lg shadow-2xl mb-5 "
                 />
               )}
+              <div className="">
               <p className="text-xl p-5 text-purple-900">{article.author}</p>
-              <p className="p-5">{article.description}</p>
+              <p className="p-5 ">{article.description}</p>
+              </div>
+              </div>
             </div>
           </Link>
+
         ))}
-      </div>
-    </div>
     </>
   );
 };
