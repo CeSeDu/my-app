@@ -21,7 +21,9 @@ const FullBlogCards = () => {
             article.author &&
             article.urlToImage.startsWith("https")
         );
+
         setData(validData); // Çekilen verileri state'e set et
+        console.log(validData)
       } catch (error) {
         console.error("Error fetching data:", error);
       }
@@ -36,43 +38,31 @@ const FullBlogCards = () => {
 
   return (
     <>
-      <div className="flex flex-wrap gap-5 justify-center">
-        {" "}
-        <div className="flex flex-wrap gap-5 justify-center">
-          {data.map((article, index) => (
-            <Link key={index} href={`/detail/${article.id}`} passHref>
-              <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-5">
-                {data.map((article, index) => (
-                  <div
-                    key={index}
-                    className="text-center border p-5 bg-purple-900 bg-opacity-10 rounded-lg shadow-2xl cursor-pointer"
-                  >
-                    <h2 className="text-2xl text-purple-950 p-5 min-h-50">
-                      {article.title}
-                    </h2>
-                    {article.urlToImage && (
-                      <div className="flex justify-center">
-                        <Image
-                          src={article.urlToImage}
-                          alt={article.title}
-                          width={450}
-                          height={550}
-                          layout="intrinsic"
-                          className="rounded-lg shadow-2xl"
-                        />
-                      </div>
-                    )}
-                    <p className="text-xl p-5 text-purple-900">
-                      {article.author}
-                    </p>
-                    <p className="p-5">{article.description}</p>
-                  </div>
-                ))}
-              </div>
-            </Link>
-          ))}
-        </div>{" "}
+    <div className="container mx-auto p-4">
+      <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 m-16">
+        {data.map((article, index) => (
+          <Link key={index} href={`/detail/${article.id}/page`} passHref>
+            <div className="m-12 text-center border p-5 bg-purple-900 bg-opacity-10 rounded-lg shadow-2xl cursor-pointer transform transition duration-500 hover:scale-105">
+              <h2 className="text-2xl text-purple-950 p-5 min-h-50">
+                {article.title}
+              </h2>
+              {article.urlToImage && (
+                <Image
+                  src={article.urlToImage}
+                  alt={article.title}
+                  width={450}
+                  height={300}
+                  objectFit="cover"
+                  className="rounded-lg shadow-2xl mb-5 m-auto"
+                />
+              )}
+              <p className="text-xl p-5 text-purple-900">{article.author}</p>
+              <p className="p-5">{article.description}</p>
+            </div>
+          </Link>
+        ))}
       </div>
+    </div>
     </>
   );
 };

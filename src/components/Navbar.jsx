@@ -7,12 +7,14 @@ import { FaInstagram } from "react-icons/fa";
 const Navbar = () => {
   return (
     <div className='flex justify-between items-center p-5 py-9 bg-slate-100 text-lg'>
+           <Link href="/">
         <div className='bg-purple-200 bg-opacity-50 p-3 rounded-lg shadow-lg font-extralight'>MyBloG</div>
+        </Link>
             <ul className='flex justify-between gap-5'>
             <Link href="/">
                 <li>Home</li>
                 </Link>
-              <Link href="/blogs">
+              <Link href="/fullBlogCards">
                 <li>Blogs</li>
                 </Link>
             </ul>
