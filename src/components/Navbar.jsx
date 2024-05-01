@@ -8,9 +8,9 @@ const Navbar = () => {
   return (
     <div className='flex justify-between items-center p-5 py-9 bg-slate-100 text-lg'>
            <Link href="/">
-        <div className='bg-purple-200 bg-opacity-50 p-3 rounded-lg shadow-lg font-extralight'>MyBloG</div>
+        <div className='bg-purple-200 bg-opacity-50 p-3 rounded-lg shadow-lg font-extralight  text-gray-600'>MyBloG</div>
         </Link>
-            <ul className='flex justify-between gap-5'>
+            <ul className='flex justify-between gap-5 text-purple-900'>
             <Link href="/">
                 <li>Home</li>
                 </Link>

@@ -37,8 +37,8 @@ const DetailPage = () => {
   }
 
   return (
-    <div className="container mx-auto p-4">
-      <div className="m-12 text-center border p-5 bg-purple-900 bg-opacity-10 rounded-lg shadow-2xl cursor-pointer transform transition duration-500 hover:scale-105">
+    <div className="container mx-auto p-4  ">
+      <div className="m-12 text-center border p-5 bg-opacity-10 rounded-lg shadow-2xl cursor-pointer transform transition duration-500 hover:scale-105">
         <h2 className="text-4xl text-purple-950 p-5 min-h-50">
           {article.title || "Başlık bulunamadı"}
         </h2>
@@ -66,7 +66,7 @@ const DetailPage = () => {
           rel="noopener noreferrer"
           className="flex justify-center p-5 border bg-purple-200 rounded-lg m-auto  w-1/4"
         >
-          <button>Read All</button>
+          <button className=" text-gray-600">Read All</button>
         </a>
       </div>
     </div>

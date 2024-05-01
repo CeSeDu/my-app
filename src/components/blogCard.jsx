@@ -9,7 +9,7 @@ const BlogCard = () => {
 <div className="m-12">
 <Link href="/fullBlogCards" className="flex justify-center p-5 border bg-purple-200 rounded-lg m-auto  w-1/4">
    <div >
-    <button className="">Read Blog</button>
+    <button className=" text-gray-600">Read Blog</button>
     </div>
 </Link>
 </div>
