@@ -41,7 +41,7 @@ const FullBlogCards = () => {
     <div className="container mx-auto p-4">
       <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 m-16">
         {data.map((article, index) => (
-          <Link key={index} href={`/detail/${article.id}/page`} passHref>
+          <Link key={index} href={`/detail/${encodeURIComponent(article.title)}/page`} passHref>
             <div className="m-12 text-center border p-5 bg-purple-900 bg-opacity-10 rounded-lg shadow-2xl cursor-pointer transform transition duration-500 hover:scale-105">
               <h2 className="text-2xl text-purple-950 p-5 min-h-50">
                 {article.title}
