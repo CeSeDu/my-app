@@ -8,11 +8,16 @@ const FullBlogCards = () => {
 
   useEffect(() => {
     const fetchData = async () => {
+      const apiKey = process.env.NEXT_PUBLIC_API_KEY; 
       try {
         const response = await fetch(
-          "https://newsapi.org/v2/everything?q=Apple&from=2024-04-27&sortBy=popularity&apiKey=935002bd262b4b8392de801283519e42"
+          `https://newsapi.org/v2/everything?q=Apple&from=2024-04-27&sortBy=popularity&apiKey=${apiKey}`
         );
+        console.log("Response status:", response.status); // HTTP durum kodunu yazdır
         const jsonData = await response.json();
+        console.log("Fetched data:", jsonData); // Yanıtı konsola yazdır
+        
+
         const validData = jsonData.articles.filter(
           (article) =>
             article.title &&
